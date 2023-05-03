@@ -1,11 +1,11 @@
-import React from 'react';
+import MainPage from "./pages/MainPage";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h5>Live Chat</h5>
-    </div>
+    <>
+      <MainPage />
+    </>
   );
-}
+};
 
 export default App;

@@ -12,7 +12,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const Button:FC<ButtonProps> = ({className,variant,size, children, uppercase, full, ...rest}, ref) => {
   return (
-    <button className={classNames(styles.button, variant,size, {uppercase, full})} {...rest} {...ref}>
+    <button className={classNames(styles.button,className, variant,size, {uppercase, full})} {...rest} {...ref}>
       {children}
     </button>
   );

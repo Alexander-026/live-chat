@@ -1,0 +1,20 @@
+
+@import '../styles/mixins.scss';
+.main {
+  background-color: var(--dark-gray);
+  height: 100vh;
+  width: 100vw;
+  padding:  4rem;
+  @include flexbox(flex,center,center);
+  gap: 3rem;
+  flex-direction: column;
+
+  &Title {
+    color: var(--green);
+  }
+  @media (max-width: 576px) {
+    gap: 2rem;
+    padding: 0;
+  }
+
+}

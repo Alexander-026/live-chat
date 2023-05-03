@@ -1,0 +1,11 @@
+@import '../../../styles/mixins.scss';
+
+.form {
+  width: 20rem;
+  padding: 1rem;
+  @include shadowBlock;
+  @media (max-width: 576px) {
+    width: 18rem;
+  }
+}
+

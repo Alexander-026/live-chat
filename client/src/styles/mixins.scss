@@ -4,7 +4,7 @@
   align-items: $align-items;
 }
 
-@mixin scroll {
+@mixin scrollTheme {
   &::-webkit-scrollbar-track,
   &::-webkit-scrollbar {
     background-color: var(--light-gray);
@@ -20,6 +20,13 @@
   scrollbar-color: var(--color-thead-table) var(--white);
   scrollbar-width: thin;
   scrollbar: thin;
+}
+
+
+@mixin shadowBlock {
+  background-color: var(--white);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius);
 }
 
 

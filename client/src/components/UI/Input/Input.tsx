@@ -5,16 +5,14 @@ import styles from "./Input.module.scss";
 
 type InputProps =  {
   label: string;
-  type: "text" | "number";
-  value: string | number;
-  onChange: (value: string | number) => void;
+  value: string ;
+  onChange: (value: string ) => void;
   className?: string;
   error?:boolean
 };
 
 const Input: FC<InputProps> = ({
   label,
-  type,
   value,
   onChange,
   className,
@@ -43,7 +41,7 @@ const Input: FC<InputProps> = ({
       <input
         
         className={styles.fieldInput}
-        type={type}
+        type='text'
         id={label}
         value={value}
         onFocus={() => setFocus(true)}

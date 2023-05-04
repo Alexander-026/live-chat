@@ -25,14 +25,6 @@
     padding: 14px;
     color: var(--black);
     border-radius: var(--radius);
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    &[type=number] {
-      -moz-appearance: textfield;
-    }
   }
 
   &:global(.error) {

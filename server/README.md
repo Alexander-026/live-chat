@@ -1,0 +1,1 @@
+To start the server, you need to enter the command ( yarn server)

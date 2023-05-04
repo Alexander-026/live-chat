@@ -1,12 +1,11 @@
 import express from 'express'
-import dotenv from 'dotenv'
 import { Server } from 'socket.io'
 import cors from 'cors'
 import http from 'http'
-
-
-
+import dotenv from 'dotenv'
 dotenv.config()
+
+
 const app = express()
 const server = http.Server(app)
 const io = new Server(server, {
@@ -44,17 +43,17 @@ app.post('/rooms', (req, res) => {
 })
 
 io.on('connection', (socket) => {
-  socket.on('ROOM:JOIN', ({ roomId, userName }) => {
+  console.log('Connect', socket.id)
+  socket.on('ROOM:JOIN', ({ roomId, fullName, id }) => {
     socket.join(roomId)
-    dbChat.get(roomId).get('users').set(socket.id, { name: userName, typing: false })
+    dbChat.get(roomId).get('users').set(socket.id, {id, fullName, typing:false})
     const users = [...dbChat.get(roomId).get('users').values()]
     socket.in(roomId).emit('ROOM:SET_USERS', users)
   })
 
-  socket.on('ROOM:TYPING', ({ roomId, users, userName, typing }) => {
-
+  socket.on('ROOM:TYPING', ({roomId,userId,users,fullName, typing }) => {
     dbChat.forEach((value, id) => {
-      value.get('users').set(socket.id, { name: userName, typing })
+      value.get('users').set(socket.id, {id: userId,fullName, typing})
       const newUsers = [...value.get('users').values()]
       socket.in(id).emit('ROOM:TYPING', newUsers)
     })
@@ -62,10 +61,12 @@ io.on('connection', (socket) => {
 
   })
 
-  socket.on('ROOM:SET_MESSAGE', ({ roomId, userName, text }) => {
+  socket.on('ROOM:SET_MESSAGE', ({ roomId, id, author, text, timestamp}) => {
     const newMes = {
-      userName,
-      text
+      id,
+      author,
+      text,
+      timestamp
     }
     dbChat.get(roomId).get('messages').push(newMes)
     socket.in(roomId).emit('ROOM:SET_MESSAGE', newMes)
@@ -87,4 +88,5 @@ server.listen(PORT, (err) => {
   if (err) {
     throw Error(err)
   }
+  console.log(`Port Started on ${PORT}`)
 })

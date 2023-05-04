@@ -52,6 +52,10 @@
    &Name {
     color: var(--dark-blue);
    }
+   &Name:global(.i) {
+    font-weight: 700;
+    text-decoration: underline;
+   }
    &Typing {
     display: none;
     width:7ch;

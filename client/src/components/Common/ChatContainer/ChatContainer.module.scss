@@ -45,15 +45,17 @@
       color: var(--dark);
       text-align: end;
       font-weight: 700;
+      
+    }
+    &InnerItem {
+      background-color: var(--green);
     }
 
     &InnerItem:global(.my) {
       background-color: var(--blue);
       margin-left: auto;
     }
-    &InnerItem:global(.alien) {
-      background-color: var(--green);
-    }
+   
   }
   &EntryField {
     height: 4rem;

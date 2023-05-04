@@ -6,15 +6,20 @@
   width: 100vw;
   padding:  4rem;
   @include flexbox(flex,center,center);
-  gap: 3rem;
   flex-direction: column;
 
-  &Title {
-    color: var(--green);
+  &Error {
+    width: 20rem;
+    padding: 1rem;
+    color: var(--red);
+    text-align: center;
+    overflow-wrap: break-word;
+    @include shadowBlock;
+   
   }
+
   @media (max-width: 576px) {
-    gap: 2rem;
-    padding: 0;
+    padding:0;
   }
 
 }

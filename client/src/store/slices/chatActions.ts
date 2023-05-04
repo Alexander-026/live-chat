@@ -25,7 +25,7 @@ export const onJoinChat = createAsyncThunk(
           joinedUser
         }
       } catch (error) {
-        return  thunkApi.rejectWithValue('Failed to connect to the room !')
+        return  thunkApi.rejectWithValue('Failed to connect to the room ! Refresh the page and try again!')
       }
    }
 )

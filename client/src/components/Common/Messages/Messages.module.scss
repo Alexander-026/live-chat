@@ -1,0 +1,59 @@
+@import "../../../styles/mixins.scss";
+.list {
+  padding: 0 1rem;
+  flex: 1;
+  width: 100%;
+  overflow-x: auto;
+  @include scrollTheme;
+  &Item {
+    margin-bottom: 0.5rem;
+   
+  }
+  &InnerItem {
+    display: block;
+    padding: 0.3rem;
+    border-radius: var(--radius);
+    overflow-wrap: break-word;
+    min-width: 5rem;
+    max-width: 17rem;
+  }
+
+  &ItemName {
+    font-size: var(--small);
+    font-weight: 700;
+    color: var(--gray);
+    text-align: start;
+  }
+  &ItemText {
+    color: var(--white);
+  }
+
+  &ItemTimestamp {
+    font-size: var(--small);
+    color: var(--dark);
+    text-align: end;
+    font-weight: 700;
+  }
+  &InnerItem {
+    background-color: var(--green);
+  }
+
+  &InnerItem:global(.my) {
+    background-color: var(--blue);
+    margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+    &InnerItem {
+      max-width: 12rem;
+    }
+    &ItemName,
+    &ItemTimestamp {
+      font-size: var(--smaller);
+    }
+    &ItemText {
+      font-size: var(--small);
+    }
+  }
+}

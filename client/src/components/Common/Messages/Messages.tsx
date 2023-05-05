@@ -15,12 +15,14 @@ const Messages = () => {
   const messageSound = new Audio("/message-sound.mp3");
 
 
+  //auto scroll after adding new message
   useEffect(() => {
     if (messagesListRef.current) {
       messagesListRef.current.scrollTo(0, messagesListRef.current.clientHeight);
     }
   }, [messages]);
 
+  // display new messages and show typing users
   useEffect(() => {
     socket.on("ROOM:SET_MESSAGE", (data: IMessage) => {
       dispatch(setMessage({ newMessage: data, newUsers: users }));

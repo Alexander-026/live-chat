@@ -19,6 +19,7 @@ const Form = () => {
   const disabledSend = !roomId || !fullName
 
 
+  // Join the room
   const joinToChat =  useCallback(async () => {
     const user:IJoinedUser = {
       id:uuid(), 
@@ -28,7 +29,7 @@ const Form = () => {
     await  dispatch(onJoinChat(user))
   }, [dispatch, fullName, roomId]);
 
-
+  //Update new joined users
   useEffect(() => {
     socket.on("ROOM:SET_USERS", (data:IUser[]) => {
       dispatch(setUsers(data))

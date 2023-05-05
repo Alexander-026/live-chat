@@ -34,6 +34,7 @@ const EntryField:FC<EntryFieldProps> = ({screen}) => {
         timestamp: moment().format("HH:mm"),
       };
       socket.emit("ROOM:SET_MESSAGE", newMessage);
+      //remove the typing property from all users
       const newUsers: IUser[] = updateTyping(users, userId, false);
       dispatch(setMessage({ newMessage, newUsers }));
       socket.emit("ROOM:TYPING", {
@@ -50,6 +51,7 @@ const EntryField:FC<EntryFieldProps> = ({screen}) => {
   const writeMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMesValue(e.target.value);
     const hasMessage = !!e.target.value;
+    //add the typing property to the user
     const newUsers: IUser[] = updateTyping(users, userId, hasMessage);
     dispatch(setUsers(newUsers));
     socket.emit("ROOM:TYPING", {

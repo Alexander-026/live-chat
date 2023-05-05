@@ -11,7 +11,7 @@ type ResponseConnect =
 
 
 
-
+//Create-Connect to a room and get room data
 export const onJoinChat = createAsyncThunk(
    'chat/connect',
    async (joinedUser:IJoinedUser, thunkApi):Promise<ResponseConnect | RejectedWithValueActionFromAsyncThunk<AnyAsyncThunk>> => {

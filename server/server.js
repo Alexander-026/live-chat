@@ -23,6 +23,7 @@ const PORT = process.env.PORT
 
 const dbChat = new Map([])
 
+// get room data by id
 app.get('/rooms/:id', (req, res) => {
   const { id: roomId } = req.params
   const newDB = dbChat.has(roomId) ? {
@@ -31,6 +32,8 @@ app.get('/rooms/:id', (req, res) => {
   } : { users: [] }
   res.json(newDB)
 })
+
+// create or connect to a room
 app.post('/rooms', (req, res) => {
   const { roomId } = req.body
   if (!dbChat.has(roomId)) {

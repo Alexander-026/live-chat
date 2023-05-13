@@ -44,7 +44,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://live-chat-six-beryl.vercel.app",
+  "proxy": "https://live-chat-six-beryl.vercel.app/api/v1",
   "browserslist": {
     "production": [
       ">0.2%",
